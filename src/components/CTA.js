@@ -1,31 +1,41 @@
-import { Link as ChakraLink, Button } from '@chakra-ui/core'
+import { Link as ChakraLink, useColorMode } from '@chakra-ui/core'
 
 import { Container } from './Container'
+import CustomModal from './CustomModal'
 
-export const CTA = () => (
-  <Container
-    flexDirection="row"
-    position="fixed"
-    bottom="0"
-    width="100%"
-    maxWidth="48rem"
-    py={2}
-  >
-    <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mx={2}>
-      <Button width="100%" variant="outline" variantColor="green">
-        chakra-ui
-      </Button>
-    </ChakraLink>
-
-    <ChakraLink
-      isExternal
-      href="https://github.com/vercel/next.js/blob/canary/examples/with-chakra-ui"
-      flexGrow={3}
-      mx={2}
+export const CTA = () => {
+  const { colorMode } = useColorMode()
+  const bgColor = {light: 'gray.100', dark: 'gray.700'}
+  const color = {light: 'gray.800', dark: 'white'}
+  
+  return (
+    <Container
+      flexDirection="row"
+      position="fixed"
+      bottom="0"
+      width="100%"
+      maxWidth="52rem"
+      py={2}
     >
-      <Button width="100%" variant="solid" variantColor="green">
-        View Repo
-      </Button>
-    </ChakraLink>
-  </Container>
-)
+      {/* <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mx={2}>
+        <Button width="100%" variant="outline" variantColor="red">
+          chakra-ui
+        </Button>
+      </ChakraLink> */}
+
+      {/* <ChakraLink
+        href="#"
+        flexGrow={1}
+        mx={2}
+        bg={colorMode[bgColor]}
+        color={colorMode[color]}
+        m={2}
+        p={4}
+      > */}
+        <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
+          Post a question
+        </CustomModal>
+      {/* </ChakraLink> */}
+    </Container>
+  )
+}
