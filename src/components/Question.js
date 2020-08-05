@@ -33,8 +33,8 @@ function Question({ title, desc, ...rest }) {
 
 function StackEx() {
   return (
-    <Stack spacing={8} mx={4} mb={24}>
-      <Text fontSize='2xl' fontWeight='semibold'>Questions:</Text>
+    <Stack spacing={5} mx={4} mb={24}>
+      <Text fontSize='3xl' fontWeight='semibold'>Questions:</Text>
       <Question
         title="Plan Money"
         desc="The future can be even brighter but a goal without a plan is just a wish"
