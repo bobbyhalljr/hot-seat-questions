@@ -41,7 +41,8 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
             <ModalHeader>Create your account</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={8}>
-              <Box textAlign='center'>
+              <Box textAlign='center' my={4}>
+                <Text>Before you post</Text>
                 <Text fontSize='2xl' fontWeight='medium' mb={6}>Sign in with GitHub</Text>
                 <Button width='50%' border='1px solid white'>Sign In</Button>
               </Box>

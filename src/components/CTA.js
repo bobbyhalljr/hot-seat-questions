@@ -32,7 +32,7 @@ export const CTA = () => {
         m={2}
         p={4}
       > */}
-        <CustomModal mb={6} width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
+        <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
           <Text>
             Post a question
           </Text>

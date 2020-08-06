@@ -11,7 +11,7 @@ function Question({ title, desc, ...rest }) {
             JavaScript
           </Badge>
         <Heading fontSize="2xl">{title}</Heading>
-        <Text fontSize='md' mt={4}>{desc}</Text>
+        <Text fontSize='lg' my={5}>{desc}</Text>
         <Stack isInline align='center'>
           <Avatar
             my={6}
@@ -19,12 +19,12 @@ function Question({ title, desc, ...rest }) {
             name="Prosper Otemuyiwa"
             src="https://bit.ly/prosper-baba"
           />
-          <Stack>
+          <Stack spacing={0.5} letterSpacing='1.6'>
             <Text fontWeight='semibold'>Mario Wayne</Text>
-            <Text color='gray.500' fontWeight='semibold'>Software Engineer</Text>
+            <Text color='gray.400' fontWeight='semibold'>Software Engineer</Text>
           </Stack>
         </Stack>
-        <ChakraLink href='#' flexGrow={1} mx={2} color='red.500' fontWeight='semibold' fontSize='lg'>
+        <ChakraLink href='#' flexGrow={1} mx={2} my={4} color='red.500' fontWeight='semibold' fontSize='lg'>
           View Full Question <Icon name='arrow-forward' size='24px' color='red.500'/>
         </ChakraLink>
       </Box>
