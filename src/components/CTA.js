@@ -1,4 +1,4 @@
-import { Link as ChakraLink, useColorMode } from '@chakra-ui/core'
+import { Link as ChakraLink, useColorMode, Text } from '@chakra-ui/core'
 
 import { Container } from './Container'
 import CustomModal from './CustomModal'
@@ -32,8 +32,10 @@ export const CTA = () => {
         m={2}
         p={4}
       > */}
-        <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
-          Post a question
+        <CustomModal mb={6} width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
+          <Text>
+            Post a question
+          </Text>
         </CustomModal>
       {/* </ChakraLink> */}
     </Container>

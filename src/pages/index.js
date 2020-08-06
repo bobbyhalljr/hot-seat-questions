@@ -18,18 +18,15 @@ import { Footer } from '../components/Footer'
 
 const Index = () => (
   <Container>
-    <Hero />
-      <Text fontSize='2xl' fontWeight='medium' mb={16} mx={4} textAlign='left'>
-        Post real questions from your technical and behavioral interviews
-      </Text>
-    <DarkModeSwitch />
-    {/* <Footer>
-      <Text fontWeight='medium'>Made with ❤️ and hard work by: <ChakraLink color='red.500' href='https://bobbybytez.io'>Bobby Hall Jr</ChakraLink></Text>
-    </Footer> */}
     <Main>
-      <StackEx />
+      <Hero />
+      <DarkModeSwitch />
+        <StackEx />
     </Main>
     <CTA />
+    <Footer d='flex' justify='center' px={4} fontSize={['lg', 'xl']} w='full' pb={48}>
+      <Text fontWeight='medium'>Made with ❤️ and hard work by: <ChakraLink color='red.500' href='https://bobbybytez.io'>Bobby Hall Jr</ChakraLink></Text>
+    </Footer>
   </Container>
 )
 
