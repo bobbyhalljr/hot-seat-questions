@@ -7,10 +7,11 @@ import {
   ListIcon,
   ListItem,
 } from '@chakra-ui/core'
+import { questions } from '../../data'
 
 import { Hero } from '../components/Hero'
 import { Container } from '../components/Container'
-import StackEx from '../components/Question'
+import Question from '../components/Question'
 import { Main } from '../components/Main'
 import { DarkModeSwitch } from '../components/DarkModeSwitch'
 import { CTA } from '../components/CTA'
@@ -21,7 +22,17 @@ const Index = () => (
     <Main>
       <Hero />
       <DarkModeSwitch />
-        <StackEx />
+        {/* <StackEx /> */}
+      {questions.map(question => (
+        <Question 
+          src={question.src}
+          title={question.title}
+          description={question.description}
+          language={question.language}
+          name={question.name}
+          jobTitle={question.jobTitle}
+        />
+      ))}
     </Main>
     <CTA />
     <Footer d='flex' justify='center' px={4} fontSize={['lg', 'xl']} w='full' pb={48}>

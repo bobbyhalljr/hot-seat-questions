@@ -1,27 +1,28 @@
 import { Box, Heading, Text, Stack, useColorMode, Badge, Avatar, Link as ChakraLink, Icon } from '@chakra-ui/core'
 
-function Question({ title, desc, ...rest }) {
+function Question({ title, description, href, language, name, jobTitle,  ...rest }) {
   const { colorMode } = useColorMode()
   const bgColor = {light: 'gray.100', dark: 'gray.700'}
   const color = {light: 'gray.800', dark: 'white'}
 
     return (
-      <Box p={5} shadow="lg" rounded='lg' bg={bgColor[colorMode]} color={color[colorMode]} borderWidth="4px #f1f1f1" {...rest}>
-        <Badge rounded="full" px={2} py={1} my={3} variantColor="teal">
-            JavaScript
-          </Badge>
+      <Box p={5} mx={4} shadow="lg" rounded='lg' bg={bgColor[colorMode]} color={color[colorMode]} borderWidth="4px #f1f1f1" {...rest}>
+        <Badge rounded="full"  px={2} py={1} my={4} variantColor="teal">
+          {language}
+        </Badge>
         <Heading fontSize="2xl">{title}</Heading>
-        <Text fontSize='lg' my={5}>{desc}</Text>
+        <Text fontSize='lg' my={5}>{description}</Text>
         <Stack isInline align='center'>
           <Avatar
-            my={6}
+            my={4}
+            mb={6}
             size="md"
-            name="Prosper Otemuyiwa"
-            src="https://bit.ly/prosper-baba"
+            name={name}
+            src={null}
           />
           <Stack spacing={0.5} letterSpacing='1.6'>
-            <Text fontWeight='semibold'>Mario Wayne</Text>
-            <Text color='gray.400' fontWeight='semibold'>Software Engineer</Text>
+            <Text fontWeight='semibold'>{name}</Text>
+            <Text color='gray.400' fontWeight='semibold'>{jobTitle}</Text>
           </Stack>
         </Stack>
         <ChakraLink href='#' flexGrow={1} mx={2} my={4} color='red.500' fontWeight='semibold' fontSize='lg'>
@@ -55,4 +56,4 @@ function StackEx() {
   );
 }
 
-export default StackEx
+export default Question
