@@ -1,16 +1,33 @@
-import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core'
+import { ApolloProvider } from '@apollo/client'
+import { useApollo } from '../apollo/client'
 
+import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core'
 import theme from '../theme'
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
+  const apolloClient = useApollo(pageProps.initialApolloState)
+
   return (
-    <ThemeProvider theme={theme}>
-      <ColorModeProvider>
-        <CSSReset />
-        <Component {...pageProps} />
-      </ColorModeProvider>
+    <ApolloProvider client={apolloClient}>
+      <ThemeProvider theme={theme}>
+        <ColorModeProvider>
+          <CSSReset />
+          <Component {...pageProps} />
+        </ColorModeProvider>
     </ThemeProvider>
+    </ApolloProvider>
   )
 }
 
-export default MyApp
+// function MyApp({ Component, pageProps }) {
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <ColorModeProvider>
+//         <CSSReset />
+//         <Component {...pageProps} />
+//       </ColorModeProvider>
+//     </ThemeProvider>
+//   )
+// }
+
+// export default MyApp

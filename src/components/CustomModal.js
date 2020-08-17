@@ -26,12 +26,7 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
     const [description, setDescription] = React.useState('')
     const [language, setLanguage] = React.useState('')
 
-    const handleChange = (e) => {
-      e.preventDefault()
-
-      const { name, value } = e.target;
-      setData({ [name]: value })
-    }
+    
   
     const initialRef = React.useRef();
     const finalRef = React.useRef();
