@@ -13,5 +13,14 @@ export const resolvers = {
                 }
             }
         }
+    },
+    Mutation: {
+        createPost(_parent, { question, description, language }, _context, _info){
+            return {
+                question,
+                description,
+                language
+            }
+        }
     }
 }

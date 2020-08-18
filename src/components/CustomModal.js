@@ -17,6 +17,8 @@ import {
     Select
 } from "@chakra-ui/core";
 import Link from 'next/link'
+import gql from 'graphql-tag'
+import { useMutation } from '@apollo/client'
 
 export default function CustomModal({ headerText, buttonText, inputLabel1, inputLabel2 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,10 +28,19 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
     const [description, setDescription] = React.useState('')
     const [language, setLanguage] = React.useState('')
 
-    
-  
+    const CREATE_POST = gql`
+      mutation CreatePost($question: String!, $description: String!, $language: String){
+        createPost(question: $question, description: $description, language: $language){
+          id
+          question
+          description
+          language
+        }
+      }
+    `
+    const [createPost, { data }] = useMutation(CREATE_POST)
+
     const initialRef = React.useRef();
-    const finalRef = React.useRef();
 
     React.useEffect(() => {
       isOpen
@@ -38,13 +49,9 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
     return (
       <>
         <Button _hover={{ bg: 'gray.200', color: 'red.500' }} transition="all 0.4s cubic-bezier(.08,.52,.52,1)" width="90%" m={['4', '6']} p={['4', '6']} rounded='full' color='white' fontSize={['base', 'lg']} bg='red.500' onClick={onOpen}>Post A Question</Button>
-        {/* <Button ml={4} ref={finalRef}>
-          I'll receive focus on close
-        </Button> */}
-  
+        
         <Modal
           initialFocusRef={initialRef}
-          finalFocusRef={finalRef}
           isOpen={isOpen}
           onClose={onClose}
           isCentered
@@ -79,12 +86,17 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                 
                 <form onSubmit={(e) => {
                   e.preventDefault()
+                  createPost({
+                    variables: {
+                      question: question,
+                      description: description,
+                      language: language,
+                    }
+                  })
+                  console.log({ data })
                   setQuestion('')
                   setDescription('')
                   setLanguage('')
-                  console.log(question)
-                  console.log(description)
-                  console.log(language)
                 }}>
                   <FormControl mt={6} isRequired>
                     <FormLabel mb={2}>Question</FormLabel>
@@ -117,12 +129,6 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                   </Box>
                 </form>
               </ModalBody>
-              {/* <ModalFooter>
-                <Button type='submit' variantColor="blue" mr={3}>
-                  Post
-                </Button>
-                <Button onClick={onClose}>Cancel</Button>
-              </ModalFooter> */}
             </>
             )}
   

@@ -21,6 +21,10 @@ export const typeDefs = gql`
     }
 
     type Query {
-        posts: Post
+        posts: Post!
+    }
+
+    type Mutation {
+        createPost(question: String!, description: String!, language: String) : Post!
     }
 `

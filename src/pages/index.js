@@ -40,13 +40,13 @@ const Index = () => {
   const { data: { posts }, loading, error } = useQuery(getAllPosts)
   console.log(posts)
   
-  // if(loading || !data){
-  //   return <h1>Loading ...</h1>
-  // }
+  if(loading){
+    return <h1>Loading ...</h1>
+  }
 
-  // if(error){
-  //   console.log({ error })
-  // }
+  if(error){
+    console.log({ error })
+  }
 
   return (
   <Container>
@@ -56,7 +56,7 @@ const Index = () => {
         {/* <StackEx /> */}
       {/* {data.posts.map(post => ( */}
         <Question 
-          // src={question.src}
+          src={posts.src}
           title={posts.question}
           description={posts.description}
           language={posts.language}
