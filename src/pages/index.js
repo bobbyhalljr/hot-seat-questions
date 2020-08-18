@@ -54,16 +54,17 @@ const Index = () => {
       <Hero />
       <DarkModeSwitch />
         {/* <StackEx /> */}
-      {/* {data.posts.map(post => ( */}
+      {posts.map(post => (
         <Question 
-          src={posts.src}
-          title={posts.question}
-          description={posts.description}
-          language={posts.language}
-          name={posts.author.name}
-          jobTitle={posts.author.jobTitle}
+          key={post.id}
+          src={post.src}
+          title={post.question}
+          description={post.description}
+          language={post.language}
+          name={post.author.name}
+          jobTitle={post.author.jobTitle}
         />
-      {/* ))} */}
+      ))}
     </Main>
     <CTA />
     <Footer d='flex' justify='center' px={4} fontSize={['lg', 'xl']} w='full' pb={48}>

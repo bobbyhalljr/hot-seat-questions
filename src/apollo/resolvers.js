@@ -1,26 +1,52 @@
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
 export const resolvers = {
     Query: {
-        posts(_parent, _args, _context, _info){
-            return {
-                id: 1,
-                question: 'How to reverse a linked list',
-                description: 'this was my first interview ever!',
-                language: 'JavaScript',
-                author: {
-                    id: 1,
-                    name: 'Bobby Hall Jr',
-                    jobTitle: 'Full Stack Web Developer'
+        async posts(_parent, { author }, _context, _info){
+            const posts = prisma.post.findMany({
+                include: {
+                    author: true
                 }
-            }
+            })
+            return posts
         }
     },
     Mutation: {
-        createPost(_parent, { question, description, language }, _context, _info){
-            return {
-                question,
-                description,
-                language
-            }
+        async createPost(_parent, { question, description, language }, _context, _info){
+            const post = await prisma.post.create({
+                data: {
+                    question,
+                    description,
+                    language,
+                    author: {
+                        connect: {
+                            id: Number(1)
+                        }
+                    }
+                }
+            })
+            return post
+        },
+        updatePost(_, { id, question, description, language }, _context, _info){
+            return prisma.post.update({
+                where: {
+                    id: id
+                },
+                data: {
+                    question,
+                    description,
+                    language
+                }
+            })
+        },
+        deletePost(_, { id }, _context, _info){
+            return prisma.post.delete({
+                where: {
+                    id: id
+                }
+            })
         }
     }
 }

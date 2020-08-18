@@ -27,14 +27,19 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
     const [question, setQuestion] = React.useState('')
     const [description, setDescription] = React.useState('')
     const [language, setLanguage] = React.useState('')
-
+    
     const CREATE_POST = gql`
-      mutation CreatePost($question: String!, $description: String!, $language: String){
+      mutation createPost($question: String!, $description: String!, $language: String){
         createPost(question: $question, description: $description, language: $language){
           id
           question
           description
           language
+          authorId
+          author {
+            name
+            jobTitle
+          }
         }
       }
     `

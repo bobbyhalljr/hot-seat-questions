@@ -4,9 +4,10 @@ export const typeDefs = gql`
     type User {
         id: ID!
         name: String!
+        email: String!
+        posts: [Post!]!
         picture: String
         jobTitle: String
-        posts: [Post]
     }
 
     type Post {
@@ -14,17 +15,20 @@ export const typeDefs = gql`
         question: String!
         description: String!
         language: String
-        author: User!
+        author: User
+        authorId: Int
         likes: Int
         comments: [String]
         views: Int
     }
 
     type Query {
-        posts: Post!
+        posts: [Post!]!
     }
 
     type Mutation {
         createPost(question: String!, description: String!, language: String) : Post!
+        updatePost(id: ID!) : Post!
+        deletePost(id: ID!): Post
     }
 `
