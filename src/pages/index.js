@@ -20,7 +20,7 @@ import { DarkModeSwitch } from '../components/DarkModeSwitch'
 import { CTA } from '../components/CTA'
 import { Footer } from '../components/Footer'
 
-const getAllPosts = gql`
+export const getAllPosts = gql`
   query posts {
     posts {
       id

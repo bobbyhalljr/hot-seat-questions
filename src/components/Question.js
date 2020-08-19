@@ -8,10 +8,10 @@ function Question({ title, description, href, language, name, jobTitle,  ...rest
     return (
       <Box p={5} mx={4} shadow="lg" rounded='lg' bg={bgColor[colorMode]} color={color[colorMode]} borderWidth="4px #f1f1f1" {...rest}>
         <Badge rounded="full"  px={2} py={1} my={4} variantColor="teal">
-          {language}
+          {language || 'No Language specified'}
         </Badge>
         <Heading fontSize="2xl">{title}</Heading>
-        <Text fontSize='lg' my={5}>{description}</Text>
+        <Text fontSize='lg' my={3}>{description}</Text>
         <Stack isInline align='center'>
           <Avatar
             my={4}

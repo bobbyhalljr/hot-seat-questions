@@ -18,7 +18,9 @@ import {
 } from "@chakra-ui/core";
 import Link from 'next/link'
 import gql from 'graphql-tag'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
+import { getAllPosts } from '../pages/index'
 
 export default function CustomModal({ headerText, buttonText, inputLabel1, inputLabel2 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,6 +30,8 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
     const [description, setDescription] = React.useState('')
     const [language, setLanguage] = React.useState('')
     
+  const router = useRouter()
+
     const CREATE_POST = gql`
       mutation createPost($question: String!, $description: String!, $language: String){
         createPost(question: $question, description: $description, language: $language){
@@ -44,11 +48,12 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
       }
     `
     const [createPost, { data }] = useMutation(CREATE_POST)
+    const { data: { posts } } = useQuery(getAllPosts)
 
     const initialRef = React.useRef();
 
     React.useEffect(() => {
-      isOpen
+
     },[signedIn])
   
     return (
@@ -96,12 +101,25 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                       question: question,
                       description: description,
                       language: language,
+                    },
+                    refetchQueries: posts.map(id => ({
+                      query: getAllPosts,
+                      variables: { id }
+                    })),
+                    update(cache, { data: { posts } }){
+                      const stalePosts = cache.readQuery({ query: getAllPosts })
+
+                      cache.writeQuery({ 
+                        query: getAllPosts,
+                        data: { posts: [stalePosts, createPost] }
+                      })
                     }
-                  })
-                  console.log({ data })
+                  }),
                   setQuestion('')
                   setDescription('')
                   setLanguage('')
+                  // {() => onClose}
+                  router.push("/")
                 }}>
                   <FormControl mt={6} isRequired>
                     <FormLabel mb={2}>Question</FormLabel>
@@ -116,14 +134,14 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                   <FormControl mt={6}>
                     <FormLabel mb={2}>What language did you use?:</FormLabel>
                     <Select onChange={e => setLanguage(e.target.value)} value={language} shadow='md' name='language' variant="outline" placeholder="JavaScript, Python, Java, etc...">
-                      <option value="JAVASCRIPT">JavaScript</option>
-                      <option value="PYTHON">Python</option>
-                      <option value="JAVA">Java</option>
+                      <option value="JavaScript">JavaScript</option>
+                      <option value="Python">Python</option>
+                      <option value="Java">Java</option>
                       <option value="C">C</option>
-                      <option value="CPLUSPLUS">C++</option>
-                      <option value="CSHARP">C#</option>
-                      <option value="GO">GO</option>
-                      <option value="TYPESCRIPT">TypeScript</option>
+                      <option value="C++">C++</option>
+                      <option value="C#">C#</option>
+                      <option value="Go">GO</option>
+                      <option value="TypeScript">TypeScript</option>
                     </Select>
                   </FormControl>
                   <Box d='flex' justifyContent='flex-end' pt={8}>
