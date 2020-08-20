@@ -118,7 +118,7 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                   setQuestion('')
                   setDescription('')
                   setLanguage('')
-                  // {() => onClose}
+                  isOpen
                   router.push("/")
                 }}>
                   <FormControl mt={6} isRequired>
