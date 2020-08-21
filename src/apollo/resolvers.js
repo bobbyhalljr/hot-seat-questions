@@ -11,10 +11,10 @@ export const resolvers = {
                 }
             })
             return posts
-        }
+        },
     },
     Mutation: {
-        async createPost(_parent, { question, description, language }, _context, _info){
+        async createPost(User, { question, description, language }, _context, _info){
             const post = await prisma.post.create({
                 data: {
                     question,

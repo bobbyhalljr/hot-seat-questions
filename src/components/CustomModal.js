@@ -61,7 +61,7 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
   
     return (
       <>
-        <Button _hover={{ bg: 'gray.200', color: 'red.500' }} transition="all 0.4s cubic-bezier(.08,.52,.52,1)" width="90%" m={['4', '6']} p={['4', '6']} rounded='full' color='white' fontSize={['base', 'lg']} bg='red.500' onClick={onOpen}>Post A Question</Button>
+        <Button _hover={{ bg: 'gray.200', color: 'red.500' }} transition="all 0.4s cubic-bezier(.08,.52,.52,1)" width="90%" m={4} mb={6} p={['4', '6']} rounded='full' color='white' fontSize={['lg', 'xl']} bg='red.500' onClick={onOpen}>Post A Question</Button>
         
         <Modal
           initialFocusRef={initialRef}
@@ -122,10 +122,9 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                   setDescription('')
                   setLanguage('')
                   onToggle()
-                  router.push("/")
                   toast({
                     title: "Question submitted successfully!",
-                    description: "Thank you for sharing 🥳",
+                    description: "Thank you for sharing 😁",
                     status: "success",
                     duration: 5000,
                     isClosable: true,

@@ -6,11 +6,16 @@ import {
   List,
   ListIcon,
   ListItem,
+  Button,
+  Box,
+  Heading,
+  useColorMode,
 } from '@chakra-ui/core'
 // import { questions } from '../../data'
 import { initializeApollo } from '../apollo/client'
 import { useQuery } from '@apollo/client'
 import gql from 'graphql-tag'
+import Link from 'next/link'
 
 import { Hero } from '../components/Hero'
 import { Container } from '../components/Container'
@@ -38,8 +43,10 @@ export const getAllPosts = gql`
 
 const Index = () => {
   const { data: { posts }, loading, error } = useQuery(getAllPosts)
-  console.log(posts)
-  
+  const { colorMode } = useColorMode()
+  const bgColor = {light: 'gray.100', dark: 'gray.700'}
+  const color = {light: 'gray.800', dark: 'white'}
+
   if(loading){
     return <h1>Loading ...</h1>
   }
@@ -52,9 +59,9 @@ const Index = () => {
   <Container>
     <Main>
       <Hero />
-      <DarkModeSwitch />
+      {/* <DarkModeSwitch /> */}
         {/* <StackEx /> */}
-      {posts.map(post => (
+      {/* {posts.map(post => (
         <Question 
           key={post.id}
           src={post.src}
@@ -64,12 +71,46 @@ const Index = () => {
           name={post.author.name}
           jobTitle={post.author.jobTitle}
         />
-      ))}
+      ))} */}
+      <Box borderRadius='1rem' bg={bgColor[colorMode]} color={color[colorMode]} p={6}>
+        <Heading mb={4}>Why Hot Seat Questions?</Heading>
+        <Text fontSize='xl' fontWeight='medium'>Hot Seat Questions was created out of motivation to help myself and others to be prepared for interviews in the tech industry. In my first white board interview ever I got ask some data structures and algorithms questions. Let's just say I bombed that interview 😅. After that I was determind to be prepared for future interviews, and that's when Hot Seat Questions was born.</Text>
+      </Box>
+      <Heading mt={12}>
+        How it works 🚀
+      </Heading>
+      <List spacing={3} fontSize={['xl', '2xl']}>
+        <ListItem>
+          <ListIcon icon="check-circle" color="green.500" />
+          Login with your email or github account
+        </ListItem>
+        <ListItem>
+          <ListIcon icon="check-circle" color="green.500" />
+          Post a question
+        </ListItem>
+        <ListItem>
+          <ListIcon icon="check-circle" color="green.500" />
+          View other questions 
+        </ListItem>
+        {/* You can also use custom icons from react-icons */}
+        <ListItem>
+          <ListIcon icon="check-circle" color="green.500" />
+          Be prepared and crush that interview!
+        </ListItem>
+      </List>
+      <Heading mt={12} textAlign='center'>So ... what are you waiting for?</Heading>
+      <Box display='flex' justifyContent='center' alignItems='center'>
+        <Link href="/questions" as="/questions">
+          <a>
+            <Button mt={4} py={6} px={6} rounded='lg' shadow='sm' color='red.500' fontSize='2xl'>View Questions <Icon name='arrow-forward' ml={2} size='26px' color='red.500'/></Button>
+          </a>
+        </Link>
+      </Box>
     </Main>
-    <CTA />
-    <Footer d='flex' justify='center' px={4} fontSize={['lg', 'xl']} w='full' pb={48}>
+    {/* <CTA /> */}
+    {/* <Footer d='flex' justify='center' px={4} fontSize={['lg', 'xl']} w='full' pb={48}>
       <Text fontWeight='medium'>Made with ❤️ and hard work by: <ChakraLink color='red.500' href='https://bobbybytez.io'>Bobby Hall Jr</ChakraLink></Text>
-    </Footer>
+    </Footer> */}
   </Container>
   )
 }

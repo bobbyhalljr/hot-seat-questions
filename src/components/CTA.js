@@ -15,29 +15,14 @@ export const CTA = () => {
       bottom="0"
       width="100%"
       maxWidth="52rem"
-      py={5}
+      py={2}
     >
-      {/* <ChakraLink isExternal href="https://chakra-ui.com" flexGrow={1} mx={2}>
-        <Button width="100%" variant="outline" variantColor="red">
-          chakra-ui
-        </Button>
-      </ChakraLink> */}
-
-      {/* <ChakraLink
-        href="#"
-        flexGrow={1}
-        mx={2}
-        bg={colorMode[bgColor]}
-        color={colorMode[color]}
-        m={2}
-        p={4}
-      > */}
-        <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
-          <Text>
-            Post a question
-          </Text>
-        </CustomModal>
-      {/* </ChakraLink> */}
+      <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
+        <Text my='auto'>
+          Post a question
+        </Text>
+      </CustomModal>
+      
     </Container>
   )
 }
