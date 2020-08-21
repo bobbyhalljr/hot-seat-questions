@@ -14,7 +14,8 @@ import {
     Text,
     Box,
     Textarea,
-    Select
+    Select,
+    useToast
 } from "@chakra-ui/core";
 import Link from 'next/link'
 import gql from 'graphql-tag'
@@ -23,15 +24,13 @@ import { useRouter } from 'next/router'
 import { getAllPosts } from '../pages/index'
 
 export default function CustomModal({ headerText, buttonText, inputLabel1, inputLabel2 }) {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
     const [signedIn, setSignedIn] = React.useState(false)
     const [scrollBehavior, setScrollBehavior] = React.useState("inside")
     const [question, setQuestion] = React.useState('')
     const [description, setDescription] = React.useState('')
     const [language, setLanguage] = React.useState('')
     
-  const router = useRouter()
-
     const CREATE_POST = gql`
       mutation createPost($question: String!, $description: String!, $language: String){
         createPost(question: $question, description: $description, language: $language){
@@ -47,6 +46,10 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
         }
       }
     `
+
+    const router = useRouter()
+    const toast = useToast()
+
     const [createPost, { data }] = useMutation(CREATE_POST)
     const { data: { posts } } = useQuery(getAllPosts)
 
@@ -118,8 +121,15 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
                   setQuestion('')
                   setDescription('')
                   setLanguage('')
-                  isOpen
+                  onToggle()
                   router.push("/")
+                  toast({
+                    title: "Question submitted successfully!",
+                    description: "Thank you for sharing 🥳",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                  })
                 }}>
                   <FormControl mt={6} isRequired>
                     <FormLabel mb={2}>Question</FormLabel>
