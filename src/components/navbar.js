@@ -58,7 +58,7 @@ const Navbar = (props) => {
 
         <Link href='/' as ='/'>
             <a>
-                <Text fontWeight='bold' fontSize={['xl', '2xl', '3xl']} mr={12} ml={2}>
+                <Text fontWeight='bold' fontSize={['2xl', '3xl']} mr={12} ml={2}>
                     Hot Seat Questions 🔥
                 </Text>
             </a>

@@ -7,7 +7,8 @@ import {
     ListIcon,
     ListItem,
     Spinner,
-    Box
+    Box, 
+    Heading
   } from '@chakra-ui/core'
   // import { questions } from '../../data'
   import { initializeApollo } from '../../apollo/client'
@@ -72,6 +73,7 @@ import {
         {/* <Hero /> */}
         {/* <DarkModeSwitch /> */}
           {/* <StackEx /> */}
+          <Heading mx={4}>Questions</Heading>
         {posts.map(post => (
           <Question 
             posts={posts}
