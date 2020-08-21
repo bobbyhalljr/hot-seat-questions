@@ -58,7 +58,7 @@ const Navbar = (props) => {
 
         <Link href='/' as ='/'>
             <a>
-                <Text fontWeight='bold' fontSize={['2xl', '3xl']} mr={12} ml={2}>
+                <Text fontWeight='bold' whiteSpace='nowrap' fontSize={['md', '3xl']} mr={12} ml={2}>
                     Hot Seat Questions 🔥
                 </Text>
             </a>
@@ -89,7 +89,7 @@ const Navbar = (props) => {
             </Box>
         </Box>
 
-        <Box ml='auto' mr={4}>
+        <Box display='flex' justifyContent='flex-end' mr={4}>
             <DarkModeSwitch />
             <Button variantColor="gray" onClick={onOpen}>
                 <svg
@@ -103,6 +103,7 @@ const Navbar = (props) => {
                 </svg>
             </Button>
         </Box>
+
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
             <DrawerContent>
