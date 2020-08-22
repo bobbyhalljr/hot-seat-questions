@@ -9,5 +9,5 @@ export const Hero = ({ title, subTitle }) => (
 
 Hero.defaultProps = {
   title: 'Hot Seat Questions 🔥',
-  subTitle: 'Where software Developers and Engineers post technical and behavioral interview questions'
+  subTitle: 'Where Software Developers and Engineers post technical and behavioral interview questions'
 }
