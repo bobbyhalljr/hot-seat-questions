@@ -73,13 +73,13 @@ const Navbar = (props) => {
                             </MenuItems>
                         </a>
                     </Link>
-                    <Link href='/about' as='/about'>
+                    {/* <Link href='/about' as='/about'>
                         <a>
                             <MenuItems>
                                 About
                             </MenuItems>
                         </a>
-                    </Link>
+                    </Link> */}
                     {/* <Box ml={4}>
                         <Button>
                             Sign In
@@ -124,13 +124,13 @@ const Navbar = (props) => {
                             </MenuItems>
                         </a>
                     </Link>
-                    <Link href='/about' as='/about'>
+                    {/* <Link href='/about' as='/about'>
                         <a>
                             <MenuItems>
                                 About
                             </MenuItems>
                         </a>
-                    </Link>
+                    </Link> */}
                 </Stack>
                 {/* <Box mt={6} display='flex'  justifyContent='space-around'>
                     <Button>
