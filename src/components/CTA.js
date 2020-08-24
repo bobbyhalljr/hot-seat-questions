@@ -15,12 +15,12 @@ export const CTA = () => {
       bottom="0"
       width="100%"
       maxWidth="52rem"
-      py={2}
+      // py={2}
     >
       <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
-        <Text>
+        {/* <p> */}
           Post a question
-        </Text>
+        {/* </p> */}
       </CustomModal>
       
     </Container>

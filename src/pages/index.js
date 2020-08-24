@@ -102,7 +102,7 @@ const Index = () => {
       <Box mt={['2', '6']} display='flex' justifyContent='center' alignItems='center'>
         <Link href="/questions" as="/questions" style={{ marginTop: '1rem' }}>
           <a>
-            <Button pb={2} pt={1} rounded='lg' shadow='sm' color='white' bg='red.500' fontSize='2xl'>View Questions</Button>
+            <Button _hover={{ bg: 'gray.100', color: 'red.500' }} py='6' px={4} rounded='lg' shadow='sm' color='white' bg='red.500' fontSize='2xl'>View Questions</Button>
           </a>
         </Link>
       </Box>
