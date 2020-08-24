@@ -25,16 +25,16 @@ export const getAllPosts = gql`
     }
   `
 
-const SingleQuestion = ({ posts }) => {
+const SingleQuestion = (props) => {
     const router = useRouter()
     const { id } = router.query
-    console.log({id})
-
+   
     const { colorMode } = useColorMode()
     const bgColor = {light: 'gray.100', dark: 'gray.700'}
     const color = {light: 'gray.800', dark: 'white'}
 
     // const { data: { posts }, loading, error } = useQuery(getAllPosts)
+    // console.log({id})
 
     return (
         <Container>
@@ -49,19 +49,19 @@ const SingleQuestion = ({ posts }) => {
 export default SingleQuestion
 
 
-// export async function getStaticProps(){
-//     const apolloClient = initializeApollo()
+export async function getServerProps(){
+    const apolloClient = initializeApollo()
   
-//     await apolloClient.query({
-//       query: getAllPosts
-//     })
+    await apolloClient.query({
+      query: getAllPosts
+    })
   
-//     return {
-//       props: {
-//         initialApolloState: apolloClient.cache.extract(),
-//       }
-//     }
-// }
+    return {
+      props: {
+        initialApolloState: apolloClient.cache.extract(),
+      }
+    }
+}
 
 // export async function getStaticPaths() {
 

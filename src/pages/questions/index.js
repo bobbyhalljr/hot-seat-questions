@@ -41,7 +41,7 @@ import {
     }
   `
   
-  const Index = () => {
+  const Index = (props) => {
     const { data: { posts }, loading, error } = useQuery(getAllPosts)
     
     if(loading){

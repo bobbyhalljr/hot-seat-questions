@@ -18,7 +18,7 @@ export const CTA = () => {
       py={2}
     >
       <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
-        <Text my='auto'>
+        <Text>
           Post a question
         </Text>
       </CustomModal>

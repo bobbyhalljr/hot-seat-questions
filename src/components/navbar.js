@@ -39,7 +39,6 @@ const Navbar = (props) => {
     const bgColor = { light: "gray.200", dark: "gray.700" };
     const color = { light: "black", dark: "white" };
 
-    const largeScreens = theme.breakpoints[2]
 
     return (
         <Flex
@@ -47,7 +46,7 @@ const Navbar = (props) => {
         align="center"
         justify="space-between"
         wrap="nowrap"
-        padding={2}
+        padding={3}
         bg={bgColor[colorMode]}
         color={color[colorMode]}
         w='full'
@@ -63,9 +62,9 @@ const Navbar = (props) => {
                 </Text>
             </a>
         </Link>
-        <Box display={['none', 'none', 'inline-block']}>
+        <Box display={['none', 'none', 'inline-block']} ml='auto' mr={12}>
             <Box display='flex'>
-                <Box d='flex' ml={48} alignItems='center' fontWeight='semibold' fontSize='xl'>
+                <Box d='flex' alignItems='flex-end' fontWeight='semibold' fontSize='xl'>
                     <Link href='/questions' as='/questions'>
                         <a>
                             <MenuItems>
@@ -89,7 +88,7 @@ const Navbar = (props) => {
             </Box>
         </Box>
 
-        <Box display='flex' justifyContent='flex-end' mr={4}>
+        <Box display='flex' justifyContent='flex-end'>
             <DarkModeSwitch />
             <Button variantColor="gray" onClick={onOpen}>
                 <svg
