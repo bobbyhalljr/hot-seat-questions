@@ -31,13 +31,13 @@ function Question({ id, title, description, href, language, name, jobTitle,  ...
             <Text color='gray.400' fontWeight='semibold'>{jobTitle}</Text>
           </Stack>
         </Stack>
-        <Link href='/questions/[id]' as={`/questions/${title}`}>
+        {/* <Link href='/questions/[id]' as={`/questions/${title}`}>
           <a>
             <Text flexGrow={1} mx={2} my={4} color='red.500' fontWeight='semibold' fontSize='lg'>
               View Full Question <Icon name='arrow-forward' size='24px' color='red.500'/>
             </Text>
           </a>
-        </Link>
+        </Link> */}
       </Box>
     );
 }
