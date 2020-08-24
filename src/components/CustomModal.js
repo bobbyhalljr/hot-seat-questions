@@ -61,7 +61,7 @@ export default function CustomModal({ headerText, buttonText, inputLabel1, input
   
     return (
       <>
-        <Button _hover={{ bg: 'gray.200', color: 'red.500' }} transition="all 0.4s cubic-bezier(.08,.52,.52,1)" width="90%" m={4} mb={6} p={['4', '6']} rounded='full' color='white' fontSize={['1rem', 'xl']} fontWeight='semibold' bg='red.500' onClick={onOpen}>POST A QUESTION</Button>
+        <Button _hover={{ bg: 'gray.200', color: 'red.500' }} transition="all 0.4s cubic-bezier(.08,.52,.52,1)" width="90%" m={4} mb={6} rounded='full' color='white' fontSize={['1rem', 'xl']} fontWeight='semibold' bg='red.500' onClick={onOpen}>POST A QUESTION</Button>
         
         <Modal
           initialFocusRef={initialRef}
