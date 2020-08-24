@@ -100,9 +100,9 @@ const Index = () => {
       </List>
       <Heading mt={24} mx={6} textAlign='center'>So.. what are you waiting for?</Heading>
       <Box mt={['2', '6']} display='flex' justifyContent='center' alignItems='center'>
-        <Link href="/questions" as="/questions" style={{ marginTop: '1rem' }}>
+        <Link href="/questions" as="/questions">
           <a>
-            <Button _hover={{ bg: 'gray.100', color: 'red.500' }} py='6' px={4} rounded='lg' shadow='sm' color='white' bg='red.500' fontSize='2xl'>View Questions</Button>
+            <Button _hover={{ bg: 'gray.100', color: 'red.500' }}  rounded='lg' shadow='sm' color='white' bg='red.500' fontSize='2xl'>View Questions</Button>
           </a>
         </Link>
       </Box>

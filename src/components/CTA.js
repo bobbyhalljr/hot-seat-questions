@@ -19,7 +19,7 @@ export const CTA = () => {
     >
       <CustomModal width="100%" rounded='full' variant="solid" color='white' bg='red.500'>
         {/* <p> */}
-          Post a question
+          {/* Post a question */}
         {/* </p> */}
       </CustomModal>
       
